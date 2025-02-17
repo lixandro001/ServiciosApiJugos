@@ -2382,19 +2382,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lixandro\\.nuget\\packages\\": {}
+    "C:\\Users\\luis\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Proyecto_Cursos_Virtuales\\Servico_Tecnico_api\\jugosApis\\ServicioJugosVentas\\ServicioJugosVentas\\ServicioJugosVentas.csproj",
+      "projectUniqueName": "C:\\serviosApiJugos\\ServiciosApiJugos\\ServicioJugosVentas.csproj",
       "projectName": "ServicioJugosVentas",
-      "projectPath": "C:\\Proyecto_Cursos_Virtuales\\Servico_Tecnico_api\\jugosApis\\ServicioJugosVentas\\ServicioJugosVentas\\ServicioJugosVentas.csproj",
-      "packagesPath": "C:\\Users\\lixandro\\.nuget\\packages\\",
-      "outputPath": "C:\\Proyecto_Cursos_Virtuales\\Servico_Tecnico_api\\jugosApis\\ServicioJugosVentas\\ServicioJugosVentas\\obj\\",
+      "projectPath": "C:\\serviosApiJugos\\ServiciosApiJugos\\ServicioJugosVentas.csproj",
+      "packagesPath": "C:\\Users\\luis\\.nuget\\packages\\",
+      "outputPath": "C:\\serviosApiJugos\\ServiciosApiJugos\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\lixandro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\luis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2402,6 +2407,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2419,7 +2425,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net6.0": {
@@ -2465,7 +2472,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

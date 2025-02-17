@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "EFEBwXo8zAtVTb+bbEBOWK/vcApgXVguho8DaVCYf70=",
+  "Hash": "mk/LmjJWGsYslI7fcO5/fhB6squin9vZwSJrRVSBiVo=",
   "Source": "ServicioJugosVentas",
   "BasePath": "_content/ServicioJugosVentas",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

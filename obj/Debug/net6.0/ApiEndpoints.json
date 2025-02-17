@@ -162,6 +162,54 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ServicioJugosVentas.Controllers.ProductosController",
+    "Method": "ActualizarProducto",
+    "RelativePath": "api/Productos/ActualizarProducto",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "producto",
+        "Type": "ServicioJugosVentas.Models.Producto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServicioJugosVentas.Controllers.ProductosController",
+    "Method": "EliminarProducto",
+    "RelativePath": "api/Productos/EliminarProducto/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServicioJugosVentas.Controllers.ProductosController",
+    "Method": "ObtenerProductoPorId",
+    "RelativePath": "api/Productos/ObtenerProducto/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ServicioJugosVentas.Controllers.VentasController",
     "Method": "GetVentas",
     "RelativePath": "api/Ventas",

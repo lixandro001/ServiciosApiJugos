@@ -116,6 +116,43 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ServicioJugosVentas.Controllers.ClientesController",
+    "Method": "EditarCliente",
+    "RelativePath": "api/Clientes/EditarCliente/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "cliente",
+        "Type": "ServicioJugosVentas.Models.Cliente",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServicioJugosVentas.Controllers.ClientesController",
+    "Method": "EliminarCliente",
+    "RelativePath": "api/Clientes/EliminarCliente/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ServicioJugosVentas.Controllers.FormasPagoController",
     "Method": "GetFormasPago",
     "RelativePath": "api/FormasPago",

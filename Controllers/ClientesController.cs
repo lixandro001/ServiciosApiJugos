@@ -47,5 +47,68 @@ namespace ServicioJugosVentas.Controllers
                 }
             }
         }
+
+        [HttpPut("EditarCliente/{id}")]
+        public async Task<IActionResult> EditarCliente(int id, [FromBody] Cliente cliente)
+        {
+            if (id != cliente.ClienteId)
+            {
+                return BadRequest(new { mensaje = "El ID del cliente no coincide." });
+            }
+
+            using (var conn = _context.Database.GetDbConnection())
+            {
+                await conn.OpenAsync();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "sp_UpdateCliente";
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add(new SqlParameter("@ClienteId", cliente.ClienteId));
+                    cmd.Parameters.Add(new SqlParameter("@Nombre", cliente.Nombre ?? (object)DBNull.Value));
+                    cmd.Parameters.Add(new SqlParameter("@Direccion", cliente.Direccion ?? (object)DBNull.Value));
+                    cmd.Parameters.Add(new SqlParameter("@Telefono", cliente.Telefono ?? (object)DBNull.Value));
+                    cmd.Parameters.Add(new SqlParameter("@Email", cliente.Email ?? (object)DBNull.Value));
+
+                    var result = await cmd.ExecuteNonQueryAsync();
+                    if (result > 0)
+                    {
+                        return Ok(new { mensaje = "Cliente actualizado correctamente." });
+                    }
+                    else
+                    {
+                        return NotFound(new { mensaje = "Cliente no encontrado." });
+                    }
+                }
+            }
+        }
+
+        [HttpDelete("EliminarCliente/{id}")]
+        public async Task<IActionResult> EliminarCliente(int id)
+        {
+            using (var conn = _context.Database.GetDbConnection())
+            {
+                await conn.OpenAsync();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "sp_DeleteCliente";
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add(new SqlParameter("@ClienteId", id));
+
+                    var result = await cmd.ExecuteNonQueryAsync();
+                    if (result > 0)
+                    {
+                        return Ok(new { mensaje = "Cliente eliminado correctamente." });
+                    }
+                    else
+                    {
+                        return NotFound(new { mensaje = "Cliente no encontrado." });
+                    }
+                }
+            }
+        }
+
+
     }
 }

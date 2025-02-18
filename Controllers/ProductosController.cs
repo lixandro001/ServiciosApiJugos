@@ -48,5 +48,118 @@ namespace ServicioJugosVentas.Controllers
                 }
             }
         }
+        
+        //Atualizar Producto
+        [HttpPut("ActualizarProducto")]
+        public async Task<IActionResult> ActualizarProducto(Producto producto)
+        {
+            using (var conn = _context.Database.GetDbConnection())
+            {
+                await conn.OpenAsync();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "sp_UpdateProducto";  // Nombre del Stored Procedure
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Parámetros del Stored Procedure
+                    cmd.Parameters.Add(new SqlParameter("@ProductoId", producto.ProductoId));
+                    cmd.Parameters.Add(new SqlParameter("@Nombre", producto.Nombre));
+                    cmd.Parameters.Add(new SqlParameter("@Descripcion", producto.Descripcion ?? (object)DBNull.Value));
+                    cmd.Parameters.Add(new SqlParameter("@Precio", producto.Precio));
+                    cmd.Parameters.Add(new SqlParameter("@Stock", producto.Stock));
+                    cmd.Parameters.Add(new SqlParameter("@CategoriaId", producto.CategoriaId));
+
+                    var filasAfectadas = await cmd.ExecuteNonQueryAsync();
+                    if (filasAfectadas > 0)
+                    {
+                        return Ok(new { mensaje = "Producto actualizado con éxito" });
+                    }
+                    else
+                    {
+                        return NotFound(new { mensaje = "No se encontró el producto a actualizar" });
+                    }
+                }
+            }
+        }
+
+        //Obtener productos por Id
+        [HttpGet("ObtenerProducto/{id}")]
+        public async Task<IActionResult> ObtenerProductoPorId(int id)
+        {
+            using (var conn = _context.Database.GetDbConnection())
+            {
+                await conn.OpenAsync();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "sp_GetProductos_ID";  // Nombre del Stored Procedure
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Parámetro del Stored Procedure
+                    cmd.Parameters.Add(new SqlParameter("@idProducto", id));
+
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            var producto = new Producto
+                            {
+                                ProductoId = reader.GetInt32(reader.GetOrdinal("ProductoId")),
+                                Nombre = reader.GetString(reader.GetOrdinal("Nombre")),
+                                Descripcion = reader.IsDBNull(reader.GetOrdinal("Descripcion"))
+                                              ? string.Empty
+                                              : reader.GetString(reader.GetOrdinal("Descripcion")),
+                                Precio = reader.GetDecimal(reader.GetOrdinal("Precio")),
+                                Stock = reader.GetInt32(reader.GetOrdinal("Stock")),
+                                CategoriaId = reader.GetInt32(reader.GetOrdinal("CategoriaId")),
+                                CategoriaNombre = reader.GetString(reader.GetOrdinal("CategoriaNombre"))
+                            };
+
+                            return Ok(producto);
+                        }
+                        else
+                        {
+                            return NotFound(new { mensaje = "Producto no encontrado" });
+                        }
+                    }
+                }
+            }
+        }
+
+
+        //Eliminar productos
+        [HttpDelete("EliminarProducto/{id}")]
+        public async Task<IActionResult> EliminarProducto(int id)
+        {
+            using (var conn = _context.Database.GetDbConnection())
+            {
+                await conn.OpenAsync();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "sp_DeleteProducto";  // Nombre del Stored Procedure
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Parámetro del Stored Procedure
+                    cmd.Parameters.Add(new SqlParameter("@ProductoId", id));
+
+                    var filasAfectadas = await cmd.ExecuteNonQueryAsync();
+                    if (filasAfectadas > 0)
+                    {
+                        return Ok(new { mensaje = "Producto eliminado con éxito" });
+                    }
+                    else
+                    {
+                        return NotFound(new { mensaje = "No se encontró el producto a eliminar" });
+                    }
+                }
+            }
+        }
+        
+
+
+
+
+
+
+
     }
 }

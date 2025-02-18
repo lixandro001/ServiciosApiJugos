@@ -89,6 +89,13 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+// Activar Swagger SIEMPRE, no solo en desarrollo
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "ServicioJugosVentas API V1");
+});
+
 app.UseRouting();
 
 // *** Usar CORS antes de la autenticación y autorización ***

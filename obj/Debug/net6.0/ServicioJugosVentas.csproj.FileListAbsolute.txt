@@ -135,3 +135,4 @@ C:\serviosApiJugos\ServiciosApiJugos\obj\Debug\net6.0\refint\ServicioJugosVentas
 C:\serviosApiJugos\ServiciosApiJugos\obj\Debug\net6.0\ServicioJugosVentas.pdb
 C:\serviosApiJugos\ServiciosApiJugos\obj\Debug\net6.0\ServicioJugosVentas.genruntimeconfig.cache
 C:\serviosApiJugos\ServiciosApiJugos\obj\Debug\net6.0\ref\ServicioJugosVentas.dll
+C:\Proyecto_Cursos_Virtuales\Servico_Tecnico_api\jugosApis\ServicioJugosVentas\ServicioJugosVentas\obj\Debug\net6.0\ServicioJugosVentas.sourcelink.json

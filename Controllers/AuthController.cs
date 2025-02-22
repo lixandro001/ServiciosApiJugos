@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using ServicioJugosVentas.Data;
@@ -51,6 +52,25 @@ namespace ServicioJugosVentas.Controllers
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return Ok(new LoginResponse { Token = tokenHandler.WriteToken(token) });
+        }
+
+        [HttpGet("test-db")]
+        public async Task<IActionResult> TestDatabase()
+        {
+            string connectionString = "workstation id=BDJUGOS.mssql.somee.com;packet size=4096;user id=codigolixandro_SQLLogin_1;pwd=$$LixandroGomez;data source=BDJUGOS.mssql.somee.com;persist security info=False;initial catalog=BDJUGOS;TrustServerCertificate=True;Encrypt=False;MultipleActiveResultSets=True;Connection Timeout=30";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    await connection.OpenAsync();
+                    return Ok("✅ Conexión exitosa a la base de datos en Somee.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"❌ Error de conexión: {ex.Message}");
+            }
         }
     }
 }

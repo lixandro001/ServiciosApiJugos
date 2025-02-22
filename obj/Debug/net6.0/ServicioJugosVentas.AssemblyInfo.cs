@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ServicioJugosVentas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b2e14d21afb2d13038dfcedc1a1483581ce3470")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5aca12e8cd04c71d21556a343c712541f138fbd8")]
 [assembly: System.Reflection.AssemblyProductAttribute("ServicioJugosVentas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ServicioJugosVentas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
